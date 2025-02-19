@@ -59,6 +59,10 @@ public class OpenAiCodeReview {
         // 3. 写入评审日志
         String logUrl = writeLog(token, log);
         System.out.println("writeLog：" + logUrl);
+
+        // 4. 消息通知
+        System.out.println("pushMessage：" + logUrl);
+        pushMessage(logUrl);
     }
 
     private static String codeReview(String diffCode) throws Exception {
