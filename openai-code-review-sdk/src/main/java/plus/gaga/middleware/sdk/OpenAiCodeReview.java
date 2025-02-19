@@ -80,7 +80,7 @@ public class OpenAiCodeReview {
 
             {
                 add(new ChatCompletionRequest.Prompt("user", "你是一个高级编程架构师，精通各类场景方案、架构设计和编程语言请，请您根据git diff记录，对代码做出评审。代码如下:"));
-                add(new ChatCompletionRequest.Prompt("user", "评审时要展示变更的代码情况，对代码的评审要有具体行号"));
+                add(new ChatCompletionRequest.Prompt("user", "评审时要展示变更的代码情况，对代码的评审要有具体行号，输出的markdown 代码块要有对应代码的高亮"));
                 add(new ChatCompletionRequest.Prompt("user", diffCode));
             }
         });
