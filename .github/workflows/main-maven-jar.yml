@@ -30,8 +30,5 @@ jobs:
       - name: Copy openai-code-review-sdk JAR
         run: mvn dependency:copy -Dartifact=plus.gaga.middleware:openai-code-review-sdk:1.0 -DoutputDirectory=./libs
 
-      - name: Download OkHttp
-        run: curl -L -o ./libs/okhttp.jar https://repo1.maven.org/maven2/com/squareup/okhttp3/okhttp/3.14.9/okhttp-3.14.9.jar
-
       - name: Run Code Review
         run: java -jar ./libs/openai-code-review-sdk-1.0.jar
