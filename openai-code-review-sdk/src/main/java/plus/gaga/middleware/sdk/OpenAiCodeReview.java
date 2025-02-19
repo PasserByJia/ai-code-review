@@ -18,8 +18,8 @@ import com.alibaba.fastjson2.JSONObject;
 
 public class OpenAiCodeReview {
 
-    private static final String API_URL = "https://api.deepseek.com/chat/completions";
-    private static final String API_KEY = "sk-46e55fc6f58042698bbfdf0139cc0cdb"; // 替换为你的 OpenAI API Key
+    private static final String API_URL = "https://burn.hair/v1/chat/completions";
+    private static final String API_KEY = "sk-bol8xEesC8N4V1TnC8923fA4A559463f99A577979206F0Ac"; // 替换为你的 OpenAI API Key
 
     public static void main(String[] args) throws Exception {
         System.out.println("测试执行");
@@ -42,7 +42,7 @@ public class OpenAiCodeReview {
 
         System.out.println("评审代码：" + diffCode.toString());
         String log = deepseek(diffCode.toString());
-        //String log = deepseek("diffCode.toString()");
+        //String log = deepseek("diff --git a/openai-code-review-sdk/pom.xml b/openai-code-review-sdk/pom.xmlindex ee89ee5..3c03393 100644--- a/openai-code-review-sdk/pom.xml+++ b/openai-code-review-sdk/pom.xml@@ -136,6 +136,14 @@                     </artifactSet>                 </configuration>             </plugin>+            <plugin>+                <groupId>org.apache.maven.plugins</groupId>+                <artifactId>maven-compiler-plugin</artifactId>+                <configuration>+                    <source>10</source>+                    <target>10</target>+                </configuration>+            </plugin>         </plugins>     </build> diff --git a/openai-code-review-sdk/src/main/java/plus/gaga/middleware/sdk/OpenAiCodeReview.java b/openai-code-review-sdk/src/main/java/plus/gaga/middleware/sdk/OpenAiCodeReview.javaindex 0832c69..bf5d000 100644--- a/openai-code-review-sdk/src/main/java/plus/gaga/middleware/sdk/OpenAiCodeReview.java+++ b/openai-code-review-sdk/src/main/java/plus/gaga/middleware/sdk/OpenAiCodeReview.jav");
         System.out.println("code review：" + log);
     }
 
@@ -58,7 +58,7 @@ public class OpenAiCodeReview {
 
         // 构建请求体
         String jsonBody = "{"
-                + "  \"model\": \"deepseek-chat\","
+                + "  \"model\": \"gpt-4o\","
                 + "  \"messages\": ["
                 + "    {\"role\": \"user\", \"content\": \"你是一个高级编程架构师，精通各类场景方案、架构设计和编程语言请，请您根据git diff记录，对代码做出评审。代码如下:\"},"
                 + "    {\"role\": \"user\", \"content\": \""+code+"\"}"
