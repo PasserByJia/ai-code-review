@@ -81,10 +81,7 @@ public class OpenAiCodeReview {
         connection.disconnect();
 
         System.out.println("评审结果：" + content.toString());
-
-        ChatCompletionSyncResponse response = JSON.parseObject(content.toString(), ChatCompletionSyncResponse.class);
-        return response.getChoices().get(0).getMessage().getContent();
-
+        return content.toString();
     }
 }
 
