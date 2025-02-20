@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import plus.gaga.middleware.domain.ChatCompletionRequest;
 import plus.gaga.middleware.utils.*;
 
-
 public class OpenAiCodeReview {
 
     // 配置配置
