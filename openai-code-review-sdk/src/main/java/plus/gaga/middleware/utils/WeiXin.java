@@ -25,11 +25,17 @@ public class WeiXin {
         this.template_id = template_id;
     }
 
-    public  void pushMessage(String logUrl) throws Exception {
+    public  void pushMessage(String logUrl,GitCommand gitCommand) throws Exception {
         String accessToken = WXAccessTokenUtils.getAccessToken(appid,secret);
         Message message = new Message(touser, template_id);
         message.put("project", "big-market");
         message.put("review", logUrl);
+        Object TemplateMessageDTO;
+        message.put(Message.TemplateKey.REPO_NAME, gitCommand.getProject());
+        message.put( Message.TemplateKey.BRANCH_NAME, gitCommand.getBranch());
+        message.put(Message.TemplateKey.COMMIT_AUTHOR, gitCommand.getAuthor());
+        message.put(Message.TemplateKey.COMMIT_MESSAGE, gitCommand.getMessage());
+
         message.setUrl(logUrl);
 
         try {

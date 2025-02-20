@@ -71,7 +71,7 @@ public class OpenAiCodeReview {
                             "3. 不要携带变量内容解释信息。\n" +
                             "4. 有清晰的标题结构\n" +
                             "返回格式严格如下：\n" +
-                            "# 小傅哥项目： OpenAi 代码评审.\n" +
+                            "# Ai 代码评审.\n" +
                             "### \uD83D\uDE00代码评分：{变量1}\n" +
                             "#### \uD83D\uDE00代码逻辑与目的：\n" +
                             "{变量6}\n" +
@@ -90,7 +90,7 @@ public class OpenAiCodeReview {
             }
         );
 
-        weiXin.pushMessage(gitCommand.commitAndPush(review));
+        weiXin.pushMessage(gitCommand.commitAndPush(review),gitCommand);
 
     }
 
