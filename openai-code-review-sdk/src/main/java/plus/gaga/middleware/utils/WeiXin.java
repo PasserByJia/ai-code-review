@@ -28,7 +28,7 @@ public class WeiXin {
     public  void pushMessage(String logUrl) throws Exception {
         String accessToken = WXAccessTokenUtils.getAccessToken(appid,secret);
         System.out.println(accessToken);
-
+        System.out.println(accessToken);
         Message message = new Message(touser, template_id);
         message.put("project", "big-market");
         message.put("review", logUrl);
