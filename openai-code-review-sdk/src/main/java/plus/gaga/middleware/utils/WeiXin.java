@@ -19,8 +19,8 @@ public class WeiXin {
     private final String template_id;
 
     public WeiXin(String appid, String secret, String touser, String template_id) {
-        this.appid = "wx5fd63cf6f7d30c39";
-        this.secret = "a8a4c25fb71671bdf5a64fa2b1b632f5";
+        this.appid = appid;
+        this.secret = secret;
         this.touser = touser;
         this.template_id = template_id;
     }

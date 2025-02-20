@@ -11,8 +11,8 @@ public class Message {
     private Map<String, Map<String, String>> data = new HashMap<>();
 
     public Message(String touser, String template_id) {
-        this.touser = "o3d_w7OIjsrZvSQsXQYmAo_2zgr4";
-        this.template_id = "Y_w-0ztfmHc7o5xavJJDspQDvZDxlp59etCePT9_LpI";
+        this.touser = touser;
+        this.template_id = template_id;
     }
 
     public void put(String key, String value) {
