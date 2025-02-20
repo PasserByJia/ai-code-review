@@ -23,12 +23,14 @@ public class WeiXin {
         this.secret = secret;
         this.touser = touser;
         this.template_id = template_id;
+        System.out.println(appid);
+        System.out.println(secret);
+        System.out.println(touser);
+        System.out.println(template_id);
     }
 
     public  void pushMessage(String logUrl) throws Exception {
         String accessToken = WXAccessTokenUtils.getAccessToken(appid,secret);
-        System.out.println(accessToken);
-        System.out.println(accessToken);
         Message message = new Message(touser, template_id);
         message.put("project", "big-market");
         message.put("review", logUrl);
