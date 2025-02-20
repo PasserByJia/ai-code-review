@@ -23,10 +23,6 @@ public class WeiXin {
         this.secret = secret;
         this.touser = touser;
         this.template_id = template_id;
-        System.out.println(appid);
-        System.out.println(secret);
-        System.out.println(touser);
-        System.out.println(template_id);
     }
 
     public  void pushMessage(String logUrl) throws Exception {
@@ -37,6 +33,7 @@ public class WeiXin {
         message.setUrl(logUrl);
 
         try {
+            System.out.println(JSON.toJSONString(message));
             String response = HttpClient.post(String.format("https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=%s", accessToken),
                     JSON.toJSONString(message));
             System.out.println(response);
