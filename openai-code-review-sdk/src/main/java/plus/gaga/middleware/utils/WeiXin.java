@@ -31,10 +31,10 @@ public class WeiXin {
         message.put("project", "big-market");
         message.put("review", logUrl);
         Object TemplateMessageDTO;
-        message.put(Message.TemplateKey.REPO_NAME, gitCommand.getProject());
-        message.put( Message.TemplateKey.BRANCH_NAME, gitCommand.getBranch());
-        message.put(Message.TemplateKey.COMMIT_AUTHOR, gitCommand.getAuthor());
-        message.put(Message.TemplateKey.COMMIT_MESSAGE, gitCommand.getMessage());
+        message.put(String.valueOf(Message.TemplateKey.REPO_NAME), gitCommand.getProject());
+        message.put(String.valueOf(Message.TemplateKey.BRANCH_NAME), gitCommand.getBranch());
+        message.put(String.valueOf(Message.TemplateKey.COMMIT_AUTHOR), gitCommand.getAuthor());
+        message.put(String.valueOf(Message.TemplateKey.COMMIT_MESSAGE), gitCommand.getMessage());
 
         message.setUrl(logUrl);
 
