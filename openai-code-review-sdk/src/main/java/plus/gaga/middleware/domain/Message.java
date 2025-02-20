@@ -10,6 +10,11 @@ public class Message {
     private String url = "https://weixin.qq.com";
     private Map<String, Map<String, String>> data = new HashMap<>();
 
+    public Message(String touser, String template_id) {
+        this.touser = touser;
+        this.template_id = template_id;
+    }
+
     public void put(String key, String value) {
         data.put(key, new HashMap<String, String>() {
             private static final long serialVersionUID = 7092338402387318563L;
