@@ -30,14 +30,11 @@ public class WeiXin {
         Message message = new Message(touser, template_id);
         message.put("project", "big-market");
         message.put("review", logUrl);
-        Object TemplateMessageDTO;
-        message.put(String.valueOf(Message.TemplateKey.REPO_NAME), gitCommand.getProject());
-        message.put(String.valueOf(Message.TemplateKey.BRANCH_NAME), gitCommand.getBranch());
-        message.put(String.valueOf(Message.TemplateKey.COMMIT_AUTHOR), gitCommand.getAuthor());
-        message.put(String.valueOf(Message.TemplateKey.COMMIT_MESSAGE), gitCommand.getMessage());
-
+        message.put(Message.TemplateKey.REPO_NAME.getCode(), gitCommand.getProject());
+        message.put(Message.TemplateKey.BRANCH_NAME.getCode(), gitCommand.getBranch());
+        message.put(Message.TemplateKey.COMMIT_AUTHOR.getCode(), gitCommand.getAuthor());
+        message.put(Message.TemplateKey.COMMIT_MESSAGE.getCode(), gitCommand.getMessage());
         message.setUrl(logUrl);
-
         try {
             System.out.println(JSON.toJSONString(message));
             String response = HttpClient.post(String.format("https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=%s", accessToken),
