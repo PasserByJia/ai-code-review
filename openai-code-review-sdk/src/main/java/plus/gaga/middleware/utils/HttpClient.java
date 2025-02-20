@@ -26,6 +26,41 @@ public class HttpClient {
         return getResponse(json, connection);
     }
 
+    public static String get(String api)  {
+        try {
+            System.out.println("get request url : "+api);
+            URL url = new URL(api);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+
+            int responseCode = connection.getResponseCode();
+            System.out.println("Response Code: " + responseCode);
+
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String inputLine;
+                StringBuilder response = new StringBuilder();
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+
+                // Print the response
+                System.out.println("Response: " + response.toString());
+
+                return response.toString();
+
+            } else {
+                System.out.println("GET request failed");
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     private static String getResponse(String json, HttpURLConnection connection) throws IOException {
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "application/json");

@@ -15,37 +15,11 @@ public class WXAccessTokenUtils {
     private static final String URL_TEMPLATE = "https://api.weixin.qq.com/cgi-bin/token?grant_type=%s&appid=%s&secret=%s";
 
     public static String getAccessToken(String APPID, String SECRET) throws Exception {
-        try {
-            String urlString = String.format(URL_TEMPLATE, GRANT_TYPE, APPID, SECRET);
-            URL url = new URL(urlString);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-
-            int responseCode = connection.getResponseCode();
-            System.out.println("Response Code: " + responseCode);
-
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                String inputLine;
-                StringBuilder response = new StringBuilder();
-
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
-                }
-                in.close();
-
-                // Print the response
-                System.out.println("Response: " + response.toString());
-
-                Token token = JSON.parseObject(response.toString(), Token.class);
-
-                return token.getAccess_token();
-            } else {
-                System.out.println("GET request failed");
-                return null;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        String response = HttpClient.get(String.format(URL_TEMPLATE, GRANT_TYPE, APPID, SECRET));
+        Token token = JSON.parseObject(response, Token.class);
+        if (token != null) {
+            return token.getAccess_token();
+        }else {
             return null;
         }
     }
